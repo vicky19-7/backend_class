@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require ('mongoose');
 
 const compass_string = 'mongodb://localhost:27017/cohort8_db'
-const atlas_string = 'mongodb+srv://victoriaigbonoba_db_user:Veekey_1234@cluster0.4rir4ys.mongodb.net/cohort8_db?appName=Cluster0'
+const atlas_string = 'mongodb+srv://victoriaigbonoba_db_user@cluster0.4rir4ys.mongodb.net/cohort8_db?appName=Cluster0'
 
 mongoose.connect(atlas_string)
     .then(() => console.log('MongoDB Connected'))

@@ -1,23 +1,28 @@
-const express = require('express');
-const mongoose = require ('mongoose');
+import 'dotenv/config'
+import express from 'express';
+import mongoose from 'mongoose';
+import userRoute from './routes/userRoutes.js';
+import router from './routes/productRoutes.js';
+const compass_string = process.env.COMPASS_STRING;
+const atlas_string = process.env.ATLAS_STRING;
 
-const compass_string = 'mongodb://localhost:27017/cohort8_db'
-const atlas_string = 'mongodb+srv://victoriaigbonoba_db_user:Veekey_1234@cluster0.4rir4ys.mongodb.net/cohort8_db?appName=Cluster0'
-
-mongoose.connect(atlas_string)
+mongoose.connect(compass_string)
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.error('Connection Error: ', err));
 
 
 const app = express();
-const port = 5555;
+const port = 5050;
 
 
 app.use(express.json())
 
 app.get("/", (req,res) => {
     res.send('Server is active!')
-});
+})
+
+app.use("/users", userRoute)
+app.use("/products", router)
 
 app.listen(port, () => {
     console.log(`Server is up and running on port : ${port}`);

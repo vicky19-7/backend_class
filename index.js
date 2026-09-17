@@ -21,7 +21,6 @@ app.use(express.json())
 app.get("/", (req,res) => {
     res.send('Server is active!')
 })
-
 app.use("/users", userRoute)
 app.use("/products", router)
 

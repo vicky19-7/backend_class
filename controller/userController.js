@@ -47,7 +47,7 @@ const loginUser = async (req, res) =>{
 // GENERAL GET
 const getAllUsers = async (req, res) => {
   try {
-    const getAll = await userModel.find();
+    const getAll = await userModel.find().select("-password");
     return res.status(200).json({
       message: "All users fetched successfully",
       data: getAll,
@@ -63,7 +63,7 @@ const getAllUsers = async (req, res) => {
 const getSingleUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const getSingle = await userModel.findById(id);
+    const getSingle = await userModel.findById(id).select("-password");
     if (!getSingle) {
       return res.status(404).json({
         message: "User not found",
